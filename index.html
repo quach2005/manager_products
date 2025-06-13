@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra sản phẩm</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kiểm tra sản phẩm</h1>
+            <div class="header-actions">
+                <div class="brand-filter">
+                    <select id="brandFilter">
+                        <option value="">Tất cả sản phẩm</option>
+                    </select>
+                </div>
+                <button id="addProductBtn" class="btn primary">
+                    <i class="fas fa-plus"></i> Thêm sản phẩm mới
+                </button>
+            </div>
+        </header>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be loaded here -->
+        </div>
+
+        <div class="save-section">
+            <button id="saveBtn" class="btn secondary">
+                <i class="fas fa-save"></i> Lấy danh sách sản phẩm còn thiếu
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal for unticked products -->
+    <div id="untickedModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Unticked Products</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="untickedList"></div>
+            </div>
+            <br>
+            <div class="modal-footer">
+                <button id="copyBtn" class="btn primary">
+                    <i class="fas fa-copy"></i> Copy List
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Thêm sản phẩm</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <div class="form-group">
+                        <label for="productName">Tên sản phẩm</label>
+                        <input type="text" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productBrand">Phân loại</label>
+                        <input type="text" id="productBrand" list="brandList" required>
+                        <datalist id="brandList">
+                            <!-- Brand options will be populated dynamically -->
+                        </datalist>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="saveProductBtn" class="btn primary">Lưu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
