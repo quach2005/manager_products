@@ -2,6 +2,7 @@
 const productsGrid = document.getElementById('productsGrid');
 const addProductBtn = document.getElementById('addProductBtn');
 const saveBtn = document.getElementById('saveBtn');
+const clearBtn = document.getElementById('clearBtn');
 const untickedModal = document.getElementById('untickedModal');
 const productModal = document.getElementById('productModal');
 const productForm = document.getElementById('productForm');
@@ -36,13 +37,6 @@ const showModal = (modal) => {
 const hideModal = (modal) => {
     modal.classList.remove('show');
     setTimeout(() => modal.style.display = 'none', 300);
-};
-
-const formatPrice = (price) => {
-    return new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND'
-    }).format(price);
 };
 
 // Brand management
@@ -262,6 +256,21 @@ const handleBrandFilter = (event) => {
     renderProducts();
 };
 
+const handleClearAll = async () => {
+    if (!confirm('Bạn có chắc chắn muốn reset tất cả checkbox về trạng thái ban đầu?')) return;
+    
+    try {
+        const updates = products.map(product => 
+            updateProduct(product.id, { checked: false })
+        );
+        await Promise.all(updates);
+        renderProducts();
+    } catch (error) {
+        console.error('Error clearing all checkboxes:', error);
+        alert('Failed to clear all checkboxes');
+    }
+};
+
 // Event listener attachment
 const attachProductEventListeners = () => {
     document.querySelectorAll('.product-checkbox').forEach(checkbox => {
@@ -289,6 +298,7 @@ addProductBtn.addEventListener('click', () => {
 });
 
 saveBtn.addEventListener('click', handleSaveChanges);
+clearBtn.addEventListener('click', handleClearAll);
 saveProductBtn.addEventListener('click', handleSaveProduct);
 copyBtn.addEventListener('click', handleCopyList);
 brandFilter.addEventListener('change', handleBrandFilter);
