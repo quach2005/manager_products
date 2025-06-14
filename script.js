@@ -221,6 +221,11 @@ const handleSaveProduct = async (event) => {
         brand: document.getElementById('productBrand').value,
     };
 
+    if (!productData.brand || !productData.name){
+        alert("Vui lòng điền đầy đủ thông tin!");
+        return;
+    }
+
     try {
         if (currentProductId) {
             await updateProduct(currentProductId, productData);

@@ -218,6 +218,8 @@ h1 {
     border-radius: var(--border-radius);
     width: 90%;
     max-width: 500px;
+    max-height: calc(100vh - 40px);
+    overflow-y: scroll;
     transform: translateY(-20px);
     transition: transform 0.3s ease;
 }
