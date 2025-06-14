@@ -213,8 +213,10 @@ h1 {
 
 .modal-content {
     background-color: var(--card-background);
+    position: relative;
     margin: auto;
     padding: 20px;
+    padding-top: 0;
     border-radius: var(--border-radius);
     width: 90%;
     max-width: 500px;
@@ -231,8 +233,12 @@ h1 {
 .modal-header {
     display: flex;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    padding-top: 20px;
     align-items: center;
     margin-bottom: 20px;
+    background: white;
 }
 
 .close-btn {

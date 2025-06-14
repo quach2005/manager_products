@@ -247,7 +247,7 @@ const handleSaveChanges = () => {
 
 const handleCopyList = () => {
     const untickedProducts = getFilteredProducts().filter(p => !p.checked);
-    const text = untickedProducts.map(p => `${p.name}`).join(', ');
+    const text = untickedProducts.map(p => `${p.name} (${p.brand})`).join(', ');
     
     navigator.clipboard.writeText(text).then(() => {
         alert('List copied to clipboard!');
